@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <img src="https://files.slack.com/files-pri/T077KKCG6-FGVJPRS04/instagrampicture1.png" alt="">
+  <div class="row jumbotron col-md-4" style="float:right; width:400px;">
+    <h2>Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button type="submit"><a href="account/login">Sign up</a></button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
