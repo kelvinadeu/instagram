@@ -7,6 +7,7 @@
 <br>
 <div class="container">
 
+
   <img id="img" src="" alt="">
   <h1 id="profile_h">{{user.username}}</h1>
   <button id="button_h" type="button" class="btn btn-outline-secondary">Edit Profile</button>
@@ -23,7 +24,7 @@
       {% csrf_token %}
       {{ form }}
       <input type="hidden" id="admin" name="user_id" value="{{user.id}}">
-      <input type="submit" name='Submit' value="Submit">
+      <a href="{% url 'profile' %}" class="btn btn-info"></a>
     </form>
 
   </div>
