@@ -19,12 +19,12 @@
       </div>
       <img src="{{all.image_path.url}}" alt="{{user.username}}">
       <p class="card-text">{{all.image_description}}</p>
-    </div>
+
     <div class="card-footer text-muted">
       <form method="post" action='{% url 'comment' %}'>
         {% csrf_token %}
         {{ forms }}
-        <input type="hidden" name="image_id" value="{{image_id}}">
+        <input type="text" name="image_id" value="{{image_id}}">
         <input type="submit" name="Submit" value="Submit">
       </form>
     </div>
@@ -35,6 +35,7 @@
       {% endif %}
       {% endfor %}
     </ul>
+    </div>
   </div>
   {% endfor %}
 </div>

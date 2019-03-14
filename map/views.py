@@ -1,9 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
-
 from .models import *
 from .forms import *
 # Create your views here.
@@ -29,7 +28,7 @@ def signup(request):
 def save_comment(request):
     comment = request.POST.get('comment')
     print(comment)
-    image_id = request.POST.get(Image, 'image_id')
+    image_id = request.POST.get('image_id')
     image = get_object_or_404(Image, id=image_id)
     comments = Comments.objects.create(image_id=image,comment=comment)
     return redirect('home')
