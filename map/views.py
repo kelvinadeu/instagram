@@ -29,7 +29,7 @@ def signup(request):
 def save_comment(request):
     comment = request.POST.get('comment')
     print(comment)
-    image_id = request.POST.get('image_id')
+    image_id = request.POST.get(Image, 'image_id')
     image = get_object_or_404(Image, id=image_id)
     comments = Comments.objects.create(image_id=image,comment=comment)
     return redirect('home')
