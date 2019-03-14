@@ -5,9 +5,9 @@
 <br>
 <br>
 <br>
+
+
 <div class="container-fluid">
-
-
   <img id="img" src="" alt="">
   <h1 id="profile_h">{{user.username}}</h1>
   <!-- <button id="button_h" type="button" class="btn btn-outline-secondary">Edit Profile</button> -->
@@ -29,14 +29,13 @@
 
   </div>
 
-</div>
+
 
 <br>
 <br>
 <br>
 <br>
 <br>
-
 <form method='POST' enctype="multipart/form-data">
   {% csrf_token %}
   {%for fields in form%}
@@ -45,7 +44,7 @@
   <!-- <button type="submit" name="button"></button> -->
 </form>
 
-</div>
+
 <div class="">
   {%for de in images%}
   <img src="{{de.image_path.url}}" alt="">
@@ -54,8 +53,7 @@
 </div>
 
 
-<div class="container">
-  <div class="row" style="margin-top:-250px;">
+
     <div class="col-md-1">
     </div>
     <div class="col-md-8">
@@ -69,16 +67,19 @@
         <h5> {{all.username}} </h5>
         <h6>{{all.image_location}}</h6>
       </div> -->
+      <div class="card">
       <img src="{{all.image_path.url}}" alt="{{user.username}}">
-      <p class="card-text">{{all.image_description}}</p>
+     <p class="card-text">description :{{all.image_description}}</p>
+  <p>   posted by:{{user.username}}</p>
       <a href="#" class="btn btn-info">Like</a>
 
     <div class="card-footer text-muted">
+
       <form method="post" action='{% url 'comment' %}'>
         {% csrf_token %}
         {{ forms }}
         <input type="text" name="image_id" value="{{image_id}}">
-        <input type="submit" name="Submit" value="Submit">
+        <input type="submit" name="Submit" value="Comment">
       </form>
     </div>
     <ul class="List-group-flush">
@@ -89,11 +90,10 @@
       {% endfor %}
     </ul>
     </div>
-  </div>
+
   {% endfor %}
-</div>
-</div>
-</div>
+  <div class="col-md-3">
+  </div>
 </div>
 
 {%endblock%}

@@ -35,6 +35,7 @@ def save_comment(request):
 
 def profile_index(request):
     profiles = Profile.objects.all()
+    
     forms=ProfileForm
     all_profile = Profile.objects.all()
 
