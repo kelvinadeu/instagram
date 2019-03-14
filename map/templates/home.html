@@ -3,7 +3,7 @@
 {{ block.super}}
 {% load bootstrap3 %}
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top:-250px;">
     <div class="col-md-1">
     </div>
     <div class="col-md-8">
@@ -19,6 +19,7 @@
       </div>
       <img src="{{all.image_path.url}}" alt="{{user.username}}">
       <p class="card-text">{{all.image_description}}</p>
+      <a href="#" class="btn btn-info">Like</a>
 
     <div class="card-footer text-muted">
       <form method="post" action='{% url 'comment' %}'>

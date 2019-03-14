@@ -2,3 +2,56 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap3 %}
+
+<br>
+<br>
+<br>
+<div class="container">
+
+  <img id="img" src="https://instagram.fnbo6-1.fna.fbcdn.net/vp/a4f4c31f85dae0dd994e15595d31dc3d/5D039885/t51.2885-19/s150x150/44757610_213963506024200_5106448499826753536_n.jpg?_nc_ht=instagram.fnbo6-1.fna.fbcdn.net" alt="">
+  <h1 id="profile_h">{{user.username}}</h1>
+  <button id="button_h" type="button" class="btn btn-outline-secondary">Edit Profile</button>
+  <i id="fa_h" style="font-size:24px" class="fa fa-cog" aria-hidden="true"></i>
+  <div id="block">
+    <p id="p_h"><strong>2</strong> posts</p>
+    <p id="p_hh"><strong>1</strong> Followers<strong>1</strong> Following</p>
+
+    {% for prof in all_profile%}
+    <h4 id="p_hhh">{{prof.last_name}}</h4>
+      {% endfor %}
+<br>
+    <form method='post' action='{% url 'profile'%}'>
+      {% csrf_token %}
+      {{ form }}
+      <input type="hidden" id="admin" name="user_id" value="{{user.id}}">
+      <input type="submit" name='Submit' value="Submit">
+    </form>
+
+  </div>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+  {%for fields in form%}
+  {{ fields }}
+  {%endfor%}
+  <button type="submit" name="button">upload</button>
+</form>
+
+</div>
+<div class="">
+  {%for de in images%}
+  <img src="{{de.image_path.url}}" alt="">
+  {%endfor%}
+
+</div>
+
+
+{%endblock%}
