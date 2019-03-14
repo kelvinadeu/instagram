@@ -27,15 +27,17 @@ def signup(request):
 
 def save_comment(request):
     comment = request.POST.get('comment')
-    print(comment)
+    # print(comment)
     image_id = request.POST.get('image_id')
-    image = get_object_or_404(Image, id=image_id)
-    comments = Comments.objects.create(image_id=image,comment=comment)
-    return redirect('home')
+    image = get_object_or_404(Image ,id=image_id)
+    user=get_object_or_404(User, id=request.user.id)
+    comments = Comments.objects.create(image_id=image, comment=comment,user_id=user)
+    return redirect ('home.html')
+
 
 def profile_index(request):
     profiles = Profile.objects.all()
-    
+
     forms=ProfileForm
     all_profile = Profile.objects.all()
 
