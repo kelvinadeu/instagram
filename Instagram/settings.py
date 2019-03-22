@@ -111,7 +111,7 @@ WSGI_APPLICATION = 'Instagram.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME' : 'insta',
 #         'USER' : 'moringaschool',
-#     'PASSWORD': '1234',
+#     'PASSWORD': '12345',
 # }
 #
 # }

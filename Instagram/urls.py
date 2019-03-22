@@ -21,9 +21,8 @@ from map import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.signup, name='signup'),
-    url(r'^accounts/',include('django.contrib.auth.urls')),
-    url(r'^home/',views.home,name='home'),
-    url(r'', include('map.urls'))
+    url(r'', include('map.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+
 
 ]

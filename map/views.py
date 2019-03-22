@@ -6,6 +6,9 @@ from django.contrib.auth import login
 from .models import *
 from .forms import *
 # Create your views here.
+def login(request):
+    return render(request,'registration/login.html')
+
 def home(request):
     count = User.objects.count()
     new = Image.objects.all()
