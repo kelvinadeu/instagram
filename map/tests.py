@@ -7,7 +7,7 @@ class Comment(TestCase):
 
     def setUp(self):
 
-        self.loise = User.objects.create(username="loise")
+        self.profile = User.objects.create(username="profile")
         self.picture = Image.objects.create(image='image1', user=self.loise)
         self.comment = Review.objects.create(comment = 'so ugly')
 
