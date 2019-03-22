@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from .models import *
@@ -8,7 +9,7 @@ from .forms import *
 # Create your views here.
 def login(request):
     return render(request,'registration/login.html')
-
+@login_required(login_url='/accounts/login/')
 def home(request):
     count = User.objects.count()
     new = Image.objects.all()
