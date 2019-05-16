@@ -1,4 +1,4 @@
-#!/home/moringaschool/Documents/Insta/venv/bin/python
+#!/home/kelvin/Moringa-projects/instagram/venv/bin/python
 
 import sys
 import getopt

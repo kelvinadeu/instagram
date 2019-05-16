@@ -1,4 +1,4 @@
-#!/home/moringaschool/Documents/Insta/venv/bin/python3
+#!/home/kelvin/Moringa-projects/instagram/venv/bin/python3.6
 # -*- coding: utf-8 -*-
 import re
 import sys

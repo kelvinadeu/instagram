@@ -72,6 +72,19 @@ class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     comment = models.CharField(max_length=100)
 
-
     def __str__(self):
         return self.comment
+
+    def save_comment(self):
+        self.save()
+
+class Like(models.Model):
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    post = models.ForeignKey(Image,on_delete=models.CASCADE)
+    control = models.CharField(max_length=50,unique=True, null=True)
+
+    def __str__(self):
+        return self.control
+
+    def save_like(self):
+        self.save()
