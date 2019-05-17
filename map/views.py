@@ -7,14 +7,11 @@ from django.contrib.auth import login
 from .models import *
 from .forms import *
 # Create your views here.
-def login(request):
-    return render(request,'registration/login.html')
-@login_required(login_url='/accounts/login/')
+
 def home(request):
     count = User.objects.count()
     new = Image.objects.all()
     return render(request,'home.html',locals())
-
 
 def signup(request):
     if request.method == 'POST':
@@ -22,12 +19,14 @@ def signup(request):
         if form.is_valid():
             form.save()
         return redirect('login')
-
     else:
         form = UserCreationForm()
-    return render(request,'signup.html',{
-        "form": form
-    })
+    return render(request, 'registration/registration_form.html', locals())
+
+@login_required(login_url='/accounts/login')
+def logout_view(request):
+    logout(request)
+
 
 def save_comment(request):
     comment = request.POST.get('comment')

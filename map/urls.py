@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^signup$', views.signup , name='signup'),
     url(r'^comments/$',views.save_comment, name='comment'),
+    url(r'accounts/', include('django.contrib.auth.urls')),
     url(r'^profile/$',views.profile_index, name='profile'),
 ]
 if settings.DEBUG:
