@@ -1,22 +1,35 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.forms import ModelForm
-from .models import Profile,Image,Comment,Location
+from .models import Post,Comment,Profile
+from .models import *
 
-class ImageForm(ModelForm):
+
+class NewPostForm(forms.ModelForm):
     class Meta:
-        model = Image
-        fields = ('image_path','username','image_description',)
+        model = Post
+        exclude = ['upload_by', 'pub_date','likes']
 
 
-class ProfileForm(ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        exclude = ('profile_pic','bio',)
+        model=Comment
+        exclude=['username','post']
+
+class ProfileForm(forms.ModelForm):
+   def __init__(self, *args, **kwargs):
+       super().__init__(*args, **kwargs)
+       self.fields['fullname'].widget=forms.TextInput()
+   class Meta:
+       model=Profile
+       exclude=['username']
 
 
-class CommentForm(ModelForm):
+class LikeForm(forms.ModelForm):
     class Meta:
-        model = Comment
-        fields = ('comment',)
+        model=Like
+        exclude=['username','post','control']
+
+
+class FollowForm(forms.ModelForm):
+    class Meta:
+        model=Follow
+        exclude=['username','followed','follow_id']
